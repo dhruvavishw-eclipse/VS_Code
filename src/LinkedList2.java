@@ -88,9 +88,6 @@ public static class Node{
         }
 
 
-
-
-
         void deleteAt(int idx){
             Node temp=head;
             if(idx==0){
@@ -107,6 +104,21 @@ public static class Node{
         }
 
         
+        // Node nthNode(Node head,int n){
+        //     Node slow=head;
+        //     Node fast =head;
+
+        //     for(int i=1;i<=n;i++){
+        //         fast=fast.next;
+        //     }
+        //     while(fast!=null){
+        //         slow=slow.next;
+        //         fast=fast.next;
+        //     }
+        //     return slow;
+        //  }
+
+
         void print(){
             Node temp=head;
             while(temp!=null){
@@ -131,8 +143,35 @@ public static class Node{
      }
 
 
+    static Node nthNode(Node head,int n){
+            Node slow=head;
+            Node fast =head;
+
+            for(int i=1;i<=n;i++){
+                fast=fast.next;
+            }
+            while(fast!=null){
+                slow=slow.next;
+                fast=fast.next;
+            }
+            return slow;
+         }
 
 
+         static void remNthNode(Node head,int n){
+
+            Node slow=head;
+            Node fast=head;
+            for(int i=1;i<=n;i++){
+                fast=fast.next;
+            }
+            while(fast!=null){
+                fast=fast.next;
+                slow=slow.next;
+            }
+            slow.next=slow.next.next;
+            
+         }
 
 
     public static void main(String [] BKP){
@@ -142,6 +181,7 @@ public static class Node{
         l1.insertAtEnd(17);
         l1.insertAtEnd(18);
 
+    
 
     // l1.print();
     
@@ -155,8 +195,13 @@ public static class Node{
 
     // System.out.println(l1.getElementAt(8));
     // System.out.println(l1.size);
-    l1.deleteAt(0);
-    l1.print();
+    // l1.deleteAt(0);
+    // l1.print();
+
+    
+
+    
+   
 
     }
     

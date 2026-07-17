@@ -23,6 +23,19 @@
       }
 
 
+     public static  Node nthNode(Node head,int n){
+            Node slow=head;
+            Node fast =head;
+
+            for(int i=1;i<=n;i++){
+                fast=fast.next;
+            }
+            while(fast!=null){
+                slow=slow.next;
+                fast=fast.next;
+            }
+            return slow;
+         }
       
 
      static int length(Node a){
@@ -52,6 +65,26 @@
      }
 
 
+      static Node remNthNode(Node head,int n){
+            Node slow=head;
+            Node fast=head;
+            
+            for(int i=1;i<=n;i++){
+                fast=fast.next;
+            }
+
+            if(fast==null){
+               head=head.next;               
+               return head;
+            }
+
+            while(fast.next!=null){
+                fast=fast.next;
+                slow=slow.next;
+            }
+            slow.next=slow.next.next;
+            return head;
+         }
 
     public static void main(String BKP []){
         Node a=new Node(25);
@@ -68,9 +101,13 @@
         Node temp=a;
          // printLL(a);
          // printRecurively(a);
-// System.out.println(length(a));
-insertAtEnd(a, 100);
-printLL(a);
+           // System.out.println(length(a));
+         // insertAtEnd(a, 100);
+         //   Node q=nthNode(a, 2);
+         //   System.out.println(q.data);
+          a=remNthNode(a, 5);
+         printLL(a);
+
 
 
       //   for(int i=1;i<=5;i++){
