@@ -20,6 +20,7 @@ public class LinkedListDoubly {
     }
   }
 
+
   static void printTail(Node tail) {
     Node temp = tail;
     while (temp != null) {
@@ -27,6 +28,7 @@ public class LinkedListDoubly {
       temp = temp.prev;
     }
   }
+
 
   static void printRandom(Node random) {
     Node temp = random;
@@ -39,6 +41,7 @@ public class LinkedListDoubly {
     }
   }
 
+
   static Node insertAtHead(Node head, int x) {
     Node t = new Node(x);
     t.next = head;
@@ -46,6 +49,7 @@ public class LinkedListDoubly {
     head = t;
     return head;
   }
+
 
   public static void insetAtTail(Node head, int x) {
     Node n = new Node(x);
@@ -58,6 +62,7 @@ public class LinkedListDoubly {
     n.prev = temp;
 
   }
+
 
   public static void insertAtIdx(Node head, int idx, int x) {
     Node n = new Node(x);
@@ -75,6 +80,7 @@ public class LinkedListDoubly {
     // now joining new node to rest of the linkedList
     n.next = r;
   }
+
 
   public static Node deleteAtIdx(Node head, int idx) {
     if(head==null) return null;
@@ -97,13 +103,66 @@ public class LinkedListDoubly {
     return head;
   }
 
+
+   static boolean palindrome(Node head){
+    if(head==null) return false;
+     Node temp1=head;
+     Node tempTail=head;
+     while(tempTail.next!=null){
+      tempTail=tempTail.next;
+     }
+     while(temp1!=tempTail){
+       if(temp1.val!=tempTail.val){
+        return false;
+       }
+       else{
+        temp1=temp1.next;
+        tempTail=tempTail.prev;
+       }
+     }
+     return true;
+   }
+
+
+   static void twoSum(Node head,int target){
+    Node temp=head;
+    Node tempTail=head;
+    while(tempTail.next!=null){
+      tempTail=tempTail.next;
+    }
+    //This is for LinkedList where node.val are not in descending order
+
+    while(temp.val<tempTail.val){
+      if(temp.val+tempTail.val==target){
+        System.out.println(temp.val + " "+ tempTail.val);
+        break;
+      }
+      else if(temp.val+tempTail.val>target){
+            tempTail=tempTail.prev;           
+      }
+      else if  (temp.val+tempTail.val<target){
+        temp=temp.next;
+      }
+      
+      else{
+       System.out.println("Target not found");
+         return;
+      }
+      
+    }
+         
+   }
+
+
+
+
   public static void main(String BKP[]) {
 
-    Node a = new Node(17);
-    Node b = new Node(29);
-    Node c = new Node(7);
-    Node d = new Node(16);
-    Node e = new Node(55);
+    Node a = new Node(7);
+    Node b = new Node(10);
+    Node c = new Node(17);
+    Node d = new Node(29);
+    Node e = new Node(40);
 
     a.prev = null;
     a.next = b;
@@ -122,8 +181,9 @@ public class LinkedListDoubly {
     // Node newHead=insertAtHead(a, 40);
     // insetAtTail(a, 180);
     // insertAtIdx(a, 1, 333);
-    deleteAtIdx(a, 0);
-    print(a);
-
+    // deleteAtIdx(a, 0);
+    // System.out.println(palindrome(a));
+    // print(a);
+    twoSum(a, 17);
   }
 }
