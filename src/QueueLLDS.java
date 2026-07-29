@@ -1,6 +1,11 @@
 import java.util.*;
 public class QueueLLDS {
   
+    // Advantages of Queue using LL
+    // 1. Unlilmited Space
+    // 2. LL very similar to Queue,so using for queue is much easy compare to Stack LL
+
+
     public static class Node{ // User def data type
         int val;
         Node next;
